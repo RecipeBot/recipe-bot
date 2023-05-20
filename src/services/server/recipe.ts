@@ -6,7 +6,9 @@ const config = {
   format: JSON.stringify({
     name: "string",
     ingredients: ["string"],
-    instructions: ["string"]
+    instructions: ["string"],
+    servings: "number",
+    cookingTime: "string",
   }),
 }
 
@@ -16,7 +18,8 @@ export const generateRecipe = async (ingredients: string) => {
     prompt: `
       Answer in the language: ${config.language}
       The answer must be a valid JSON object with the following format: ${config.format}.
-      The valid JSON object must fit in ${config.tokens} tokens.
+      The valid JSON object must fit in ${config.tokens} text tokens.
+      The valid JSON object cannot have the characters "\n" nor "\t".
       Create a food recipe based on the following ingredients: ${ingredients}.
       The valid JSON object:
     `,
@@ -27,9 +30,7 @@ export const generateRecipe = async (ingredients: string) => {
     presence_penalty: 0
   })
 
-  const safeResponse = response.data.choices[0].text?.replaceAll("\n", "").replaceAll("\t", "")
+  console.log('safeResponse', response.data.choices[0].text)
 
-  console.log('safeResponse', safeResponse)
-
-  return JSON.parse(safeResponse as string)
+  return JSON.parse(response.data.choices[0].text as string)
 }
