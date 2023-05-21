@@ -9,14 +9,14 @@ const config = {
   },
   ingredients: {
     max: 5,
-    characters: 10,
+    characters: 20,
   },
   format: JSON.stringify({
     name: "string",
     ingredients: ["string"],
     instructions: ["string"],
     servings: "number",
-    cookingTime: "string",
+    cookingTime: "number (minutes)",
   }),
 }
 

@@ -5,16 +5,21 @@ import { Robot } from 'phosphor-react'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { useRouter } from 'next/router'
 
 const inter = Inter({ subsets: ['latin'] })
 
 const RecipeFormSchema = z.object({
-  ingredients: z.string().nonempty('Insira pelo menos um ingrediente')
+  ingredients: z
+    .string()
+    .nonempty('Insira pelo menos um ingrediente')
+    .transform(value => value.replaceAll('/', 'of').replaceAll(' ', '+'))
 })
 
 type RecipeFormSchemaType = z.infer<typeof RecipeFormSchema>
 
 export default function Home() {
+  const { push } = useRouter()
 
   const { control, handleSubmit } = useForm<RecipeFormSchemaType>({
     defaultValues: {
@@ -23,13 +28,13 @@ export default function Home() {
     resolver: zodResolver(RecipeFormSchema)
   })
 
-  const onSubmit = (data: RecipeFormSchemaType) => {
-    console.log(data)
+  const onSubmit = ({ ingredients }: RecipeFormSchemaType) => {
+    push(`/recipe/${ingredients}`)
   }
 
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-center gap-6 p-10 bg-bg-df ${inter.className}`}
+      className={`flex min-h-screen flex-col items-center justify-center gap-6 p-10 bg-bg-df`}
     >
       <div className='flex items-center justify-start gap-2'>
         <Robot size={48} weight="bold" />

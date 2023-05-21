@@ -10,7 +10,7 @@ export const getRecipe = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const response = await generateRecipe(String(req.query.ingredients))
 
-    res.status(200).json({ data: response })
+    res.status(200).json({ recipe: response })
   } catch (error) {
     console.error(error)
     res.status(500).json({ message: "Internal server error" })
