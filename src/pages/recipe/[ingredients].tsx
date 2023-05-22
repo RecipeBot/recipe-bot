@@ -21,52 +21,54 @@ export default function Recipe(props: RecipeProps) {
 
   return (
     <main
-      className={`flex min-h-screen flex-col justify-start gap-6 p-10 bg-bg-df`}
+      className={`flex flex-col min-h-screen p-10 bg-bg-df lg:items-center`}
     >
-      <div className='flex items-center justify-start gap-2'>
-        <Robot size={48} weight="bold" />
-        <h2 className='text-2xl font-bold text-zinc-900 lg:text-4xl'>Nome do App</h2>
-      </div>
-
-      <hr className="border-zinc-300" />
-
-      <h1 className='text-2xl font-bold text-zinc-900 lg:text-4xl'>{recipe.name}</h1>
-
-      <div className="flex gap-4 align-center">
-        <div
-          className="flex gap-2 align-center"
-        >
-          <User size={22} weight="bold" />
-          <p>
-            {recipe.servings} pessoas
-          </p>
+      <div className={`flex flex-col gap-6`}>
+        <div className='flex items-center justify-start gap-2'>
+          <Robot size={48} weight="bold" />
+          <h2 className='text-2xl font-bold text-zinc-900 lg:text-4xl'>Nome do App</h2>
         </div>
-        <div
-          className="flex gap-2 align-center"
-        >
-          <Clock size={22} weight="bold" />
-          <p>
-            {recipe.cookingTime} minutos
-          </p>
-        </div>
-      </div>
 
-      <h2 className='text-1xl font-bold text-zinc-900 lg:text-3xl'>Ingredientes</h2>
-      <ul>
-        {
-          recipe.ingredients.map((ingredient) => (
-            <li key={ingredient}>{ingredient}</li>
-          ))
-        }
-      </ul>
-      <h2 className='text-1xl font-bold text-zinc-900 lg:text-3xl'>Modo de preparo</h2>
-      <ul>
-        {
-          recipe.instructions.map((instruction, index) => (
-            <li key={instruction}>{index + 1} - {instruction}</li>
-          ))
-        }
-      </ul>
+        <hr className="border-zinc-300" />
+
+        <h1 className='text-2xl font-bold text-zinc-900 lg:text-4xl'>{recipe.name}</h1>
+
+        <div className="flex gap-4 align-center">
+          <div
+            className="flex gap-2 align-center"
+          >
+            <User size={22} weight="bold" />
+            <p>
+              {recipe.servings} pessoas
+            </p>
+          </div>
+          <div
+            className="flex gap-2 align-center"
+          >
+            <Clock size={22} weight="bold" />
+            <p>
+              {recipe.cookingTime} minutos
+            </p>
+          </div>
+        </div>
+
+        <h2 className='text-1xl font-bold text-zinc-900 lg:text-3xl'>Ingredientes</h2>
+        <ul>
+          {
+            recipe.ingredients.map((ingredient) => (
+              <li key={ingredient}>{ingredient}</li>
+            ))
+          }
+        </ul>
+        <h2 className='text-1xl font-bold text-zinc-900 lg:text-3xl'>Modo de preparo</h2>
+        <ul>
+          {
+            recipe.instructions.map((instruction, index) => (
+              <li key={instruction}>{index + 1} - {instruction}</li>
+            ))
+          }
+        </ul>
+      </div>
     </main>
   )
 }
