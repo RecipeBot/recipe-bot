@@ -36,9 +36,17 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col items-center justify-center gap-6 p-10 bg-bg-df`}
     >
-      <div className='flex items-center justify-start gap-2'>
-        <Robot size={48} weight="bold" />
-        <h1 className='text-2xl font-bold text-zinc-900 lg:text-4xl'>Nome do app</h1>
+      <div className='flex flex-col gap-2 items-center'>
+        <div className='flex items-center justify-start gap-2'>
+          <Robot size={48} weight="bold" />
+          <h1 className='text-2xl font-bold text-zinc-900 lg:text-4xl'>
+            <span className="text-brand-500">Chef</span> Chat
+          </h1>
+        </div>
+        <h2 className='text-center font-bold'>
+          Desvendando sabores com um toque de
+          <span className="text-brand-500 font-bold">AI</span>.
+        </h2>
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}

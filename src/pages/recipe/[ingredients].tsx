@@ -26,7 +26,9 @@ export default function Recipe(props: RecipeProps) {
       <div className={`flex flex-col gap-6`}>
         <div className='flex items-center justify-start gap-2'>
           <Robot size={48} weight="bold" />
-          <h2 className='text-2xl font-bold text-zinc-900 lg:text-4xl'>Nome do App</h2>
+          <h1 className='text-2xl font-bold text-zinc-900 lg:text-4xl'>
+            <span className="text-brand-500">Chef</span> Chat
+          </h1>
         </div>
 
         <hr className="border-zinc-300" />
